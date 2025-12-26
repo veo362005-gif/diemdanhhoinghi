@@ -14,7 +14,7 @@
         }
         .container { 
             max-width: 650px; 
-            margin: 20px auto; 
+            margin: 10px auto; 
             background: white; 
             border-radius: 10px; 
             overflow: hidden; 
@@ -25,29 +25,32 @@
             background: linear-gradient(135deg, #da251d 0%, #b31d16 100%);
             color: #ffff00; 
             text-align: center; 
-            padding: 35px 20px;
+            padding: 30px 15px;
             border-bottom: 5px solid #ffcc00;
         }
-        /* Tăng size chữ 2 dòng đầu */
-        .line1 { font-size: 22px; font-weight: bold; margin: 0; letter-spacing: 1px; }
-        .line2 { font-size: 24px; font-weight: bold; margin: 5px 0; letter-spacing: 1px; }
+        
+        /* 2 dòng tiêu đề đầu tiên */
+        .line1 { font-size: 21px; font-weight: bold; margin: 0; letter-spacing: 0.5px; }
+        .line2 { font-size: 23px; font-weight: bold; margin: 5px 0; letter-spacing: 0.5px; }
         
         /* 3 ký tự sao */
-        .stars { font-size: 28px; margin: 10px 0; color: #ffcc00; }
+        .stars { font-size: 26px; margin: 8px 0; color: #ffcc00; }
         
-        /* Nội dung phía dưới nhỏ hơn 2 dòng đầu */
+        /* Tiêu đề chính ngắt dòng rõ ý */
         .title-main { 
             margin: 15px 0; 
-            font-size: 18px; 
-            line-height: 1.5; 
+            font-size: 17px; 
+            line-height: 1.6; 
             text-transform: uppercase; 
             font-weight: bold;
-            color: #ffffff; /* Chuyển sang màu trắng để phân biệt với 2 dòng đầu màu vàng */
+            color: #ffffff;
         }
-        
-        form { padding: 30px; }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-weight: bold; margin-bottom: 8px; color: #b31d16; font-size: 17px; }
+        .title-main span { display: block; margin-bottom: 4px; }
+        .highlight { color: #ffff00; } /* Màu vàng cho chữ Điểm danh */
+
+        form { padding: 25px; }
+        .form-group { margin-bottom: 18px; }
+        label { display: block; font-weight: bold; margin-bottom: 6px; color: #b31d16; font-size: 17px; }
         input[type="text"] { 
             width: 100%; 
             padding: 12px; 
@@ -71,7 +74,7 @@
             text-transform: uppercase;
             box-shadow: 0 4px 0 #8b120c;
         }
-        .footer { text-align: center; font-size: 13px; color: #b31d16; margin-top: 20px; font-weight: bold; padding-bottom: 30px; }
+        .footer { text-align: center; font-size: 13px; color: #b31d16; margin-top: 15px; font-weight: bold; padding-bottom: 25px; }
     </style>
 </head>
 <body>
@@ -82,7 +85,11 @@
         <p class="line2">ĐẢNG ỦY PHƯỜNG ĐÔNG HƯNG THUẬN</p>
         <div class="stars">* * *</div>
         <div class="title-main">
-            ĐIỂM DANH ĐẠI BIỂU DỰ HỘI NGHỊ TỔNG KẾT CÔNG TÁC XÂY DỰNG ĐẢNG, XÂY DỰNG CHÍNH QUYỀN, CÔNG TÁC VẬN ĐỘNG NHÂN DÂN NĂM 2025; TRIỂN KHAI PHƯƠNG HƯỚNG, NHIỆM VỤ NĂM 2026; TỔNG KẾT ĐỢT THI ĐUA CAO ĐIỂM "100 NGÀY HOẠT ĐỘNG TINH - GỌN - MẠNH - HIỆU NĂNG, HIỆU LỰC, HIỆU QUẢ" VÀ TUYÊN DƯƠNG ĐIỂN HÌNH "DÂN VẬN KHÉO" NĂM 2025
+            <span class="highlight">ĐIỂM DANH ĐẠI BIỂU DỰ HỘI NGHỊ</span>
+            <span>TỔNG KẾT CÔNG TÁC XÂY DỰNG ĐẢNG, XÂY DỰNG CHÍNH QUYỀN,</span>
+            <span>CÔNG TÁC VẬN ĐỘNG NHÂN DÂN NĂM 2025;</span>
+            <span>TRIỂN KHAI PHƯƠNG HƯỚNG, NHIỆM VỤ NĂM 2026</span>
+            <span style="font-size: 15px; margin-top: 10px;">TỔNG KẾT ĐỢT THI ĐUA CAO ĐIỂM "100 NGÀY HOẠT ĐỘNG TINH - GỌN - MẠNH - HIỆU NĂNG, HIỆU LỰC, HIỆU QUẢ" VÀ TUYÊN DƯƠNG ĐIỂN HÌNH "DÂN VẬN KHÉO" NĂM 2025</span>
         </div>
     </div>
 
@@ -135,7 +142,7 @@
                 btn.innerHTML = "XÁC NHẬN ĐIỂM DANH";
             })
             .catch(error => {
-                alert('Lỗi: ' + error.message);
+                alert('Lỗi kết nối: Vui lòng thử lại.');
                 btn.disabled = false;
                 btn.innerHTML = "XÁC NHẬN ĐIỂM DANH";
             });
