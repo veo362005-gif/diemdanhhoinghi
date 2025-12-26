@@ -25,11 +25,25 @@
             background: linear-gradient(135deg, #da251d 0%, #b31d16 100%);
             color: #ffff00; 
             text-align: center; 
-            padding: 30px 20px;
+            padding: 35px 20px;
             border-bottom: 5px solid #ffcc00;
         }
-        .header h2 { margin: 0; font-size: 16px; letter-spacing: 1px; }
-        .header h1 { margin: 10px 0; font-size: 20px; line-height: 1.4; text-transform: uppercase; }
+        /* Tăng size chữ 2 dòng đầu */
+        .line1 { font-size: 22px; font-weight: bold; margin: 0; letter-spacing: 1px; }
+        .line2 { font-size: 24px; font-weight: bold; margin: 5px 0; letter-spacing: 1px; }
+        
+        /* 3 ký tự sao */
+        .stars { font-size: 28px; margin: 10px 0; color: #ffcc00; }
+        
+        /* Nội dung phía dưới nhỏ hơn 2 dòng đầu */
+        .title-main { 
+            margin: 15px 0; 
+            font-size: 18px; 
+            line-height: 1.5; 
+            text-transform: uppercase; 
+            font-weight: bold;
+            color: #ffffff; /* Chuyển sang màu trắng để phân biệt với 2 dòng đầu màu vàng */
+        }
         
         form { padding: 30px; }
         .form-group { margin-bottom: 20px; }
@@ -43,7 +57,6 @@
             font-size: 16px;
             background-color: #fffdf0;
         }
-        input:focus { border-color: #ffcc00; outline: none; box-shadow: 0 0 5px rgba(255, 204, 0, 0.5); }
         
         button { 
             width: 100%; 
@@ -57,23 +70,20 @@
             cursor: pointer; 
             text-transform: uppercase;
             box-shadow: 0 4px 0 #8b120c;
-            transition: all 0.2s;
         }
-        button:active { transform: translateY(3px); box-shadow: 0 1px 0 #8b120c; }
-        button:disabled { background: #ccc; color: #666; box-shadow: none; cursor: not-allowed; }
-
         .footer { text-align: center; font-size: 13px; color: #b31d16; margin-top: 20px; font-weight: bold; padding-bottom: 30px; }
-        .decoration { text-align: center; margin-bottom: 10px; color: #ffcc00; font-size: 24px; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="header">
-        <h2>ĐẢNG BỘ THÀNH PHỐ HỒ CHÍ MINH</h2>
-        <h2>ĐẢNG ỦY PHƯỜNG ĐÔNG HƯNG THUẬN</h2>
-        <div class="decoration">✦ ✦ ✦</div>
-        <h1>ĐIỂM DANH ĐẠI BIỂU DỰ HỘI NGHỊ TỔNG KẾT CÔNG TÁC XÂY DỰNG ĐÀNG, XÂY DỰNG CHÍNH QUYỀN, CÔNG TÁC VẬN ĐỘNG NHÂN DÂN NĂM 2025; TRIỂN KHAI PHƯƠNG HƯỚNG, NHIỆM VỤ NĂM 2026; TỔNG KẾT ĐỢT THI ĐUA CAO ĐIỂM "100 NGÀY HOẠT ĐỘNG TINH - GỌN - MẠNH - HIỆU NĂNG, HIỆU LỰC, HIỆU QUẢ" VÀ TUYÊN DƯƠNG ĐIỂN HÌNH "DÂN VẬN KHÉO" NĂM 2025</h1>
+        <p class="line1">ĐẢNG BỘ THÀNH PHỐ HỒ CHÍ MINH</p>
+        <p class="line2">ĐẢNG ỦY PHƯỜNG ĐÔNG HƯNG THUẬN</p>
+        <div class="stars">* * *</div>
+        <div class="title-main">
+            ĐIỂM DANH ĐẠI BIỂU DỰ HỘI NGHỊ TỔNG KẾT CÔNG TÁC XÂY DỰNG ĐẢNG, XÂY DỰNG CHÍNH QUYỀN, CÔNG TÁC VẬN ĐỘNG NHÂN DÂN NĂM 2025; TRIỂN KHAI PHƯƠNG HƯỚNG, NHIỆM VỤ NĂM 2026; TỔNG KẾT ĐỢT THI ĐUA CAO ĐIỂM "100 NGÀY HOẠT ĐỘNG TINH - GỌN - MẠNH - HIỆU NĂNG, HIỆU LỰC, HIỆU QUẢ" VÀ TUYÊN DƯƠNG ĐIỂN HÌNH "DÂN VẬN KHÉO" NĂM 2025
+        </div>
     </div>
 
     <form id="attendanceForm">
@@ -115,7 +125,6 @@
         formData.append('fullname', form.fullname.value);
         formData.append('unit', form.unit.value);
         formData.append('position', form.position.value);
-        // Vì hội nghị này không có chuyên đề, ta gửi giá trị mặc định để Google Sheet không bị trống cột cuối
         formData.append('topics', "Dự Hội nghị Tổng kết 2025");
 
         fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: formData})
@@ -126,7 +135,7 @@
                 btn.innerHTML = "XÁC NHẬN ĐIỂM DANH";
             })
             .catch(error => {
-                alert('Có lỗi xảy ra: ' + error.message);
+                alert('Lỗi: ' + error.message);
                 btn.disabled = false;
                 btn.innerHTML = "XÁC NHẬN ĐIỂM DANH";
             });
