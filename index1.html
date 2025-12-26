@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điểm danh Đại biểu - Đảng ủy Phường Đông Hưng Thuận</title>
+    <style>
+        body { 
+            font-family: 'Times New Roman', Times, serif; 
+            background-color: #fcfcfc; 
+            margin: 0; 
+            padding: 15px;
+            background-image: radial-gradient(circle at top, #fff5e6 0%, #f4f4f4 100%);
+        }
+        .container { 
+            max-width: 650px; 
+            margin: 20px auto; 
+            background: white; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+            border: 2px solid #da251d;
+        }
+        .header { 
+            background: linear-gradient(135deg, #da251d 0%, #b31d16 100%);
+            color: #ffff00; 
+            text-align: center; 
+            padding: 30px 20px;
+            border-bottom: 5px solid #ffcc00;
+        }
+        .header h2 { margin: 0; font-size: 16px; letter-spacing: 1px; }
+        .header h1 { margin: 10px 0; font-size: 20px; line-height: 1.4; text-transform: uppercase; }
+        
+        form { padding: 30px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; color: #b31d16; font-size: 17px; }
+        input[type="text"] { 
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid #d1d1d1; 
+            border-radius: 5px; 
+            box-sizing: border-box; 
+            font-size: 16px;
+            background-color: #fffdf0;
+        }
+        input:focus { border-color: #ffcc00; outline: none; box-shadow: 0 0 5px rgba(255, 204, 0, 0.5); }
+        
+        button { 
+            width: 100%; 
+            background: linear-gradient(to bottom, #da251d, #b31d16);
+            color: #ffff00; 
+            padding: 15px; 
+            border: none; 
+            border-radius: 5px; 
+            font-size: 18px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            text-transform: uppercase;
+            box-shadow: 0 4px 0 #8b120c;
+            transition: all 0.2s;
+        }
+        button:active { transform: translateY(3px); box-shadow: 0 1px 0 #8b120c; }
+        button:disabled { background: #ccc; color: #666; box-shadow: none; cursor: not-allowed; }
+
+        .footer { text-align: center; font-size: 13px; color: #b31d16; margin-top: 20px; font-weight: bold; padding-bottom: 30px; }
+        .decoration { text-align: center; margin-bottom: 10px; color: #ffcc00; font-size: 24px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>ĐẢNG BỘ THÀNH PHỐ HỒ CHÍ MINH</h2>
+        <h2>ĐẢNG ỦY PHƯỜNG ĐÔNG HƯNG THUẬN</h2>
+        <div class="decoration">✦ ✦ ✦</div>
+        <h1>ĐIỂM DANH ĐẠI BIỂU DỰ HỘI NGHỊ TỔNG KẾT CÔNG TÁC XÂY DỰNG ĐÀNG, XÂY DỰNG CHÍNH QUYỀN, CÔNG TÁC VẬN ĐỘNG NHÂN DÂN NĂM 2025; TRIỂN KHAI PHƯƠNG HƯỚNG, NHIỆM VỤ NĂM 2026; TỔNG KẾT ĐỢT THI ĐUA CAO ĐIỂM "100 NGÀY HOẠT ĐỘNG TINH - GỌN - MẠNH - HIỆU NĂNG, HIỆU LỰC, HIỆU QUẢ" VÀ TUYÊN DƯƠNG ĐIỂN HÌNH "DÂN VẬN KHÉO" NĂM 2025</h1>
+    </div>
+
+    <form id="attendanceForm">
+        <div class="form-group">
+            <label>1. Họ và tên:</label>
+            <input type="text" name="fullname" required placeholder="Nhập đầy đủ họ và tên">
+        </div>
+
+        <div class="form-group">
+            <label>2. Đơn vị:</label>
+            <input type="text" name="unit" required placeholder="Ví dụ: Chi bộ Khu phố 1">
+        </div>
+
+        <div class="form-group">
+            <label>3. Chức vụ:</label>
+            <input type="text" name="position" required placeholder="Ví dụ: Bí thư Chi bộ">
+        </div>
+
+        <button type="submit" id="submitBtn">XÁC NHẬN ĐIỂM DANH</button>
+    </form>
+</div>
+
+<div class="footer">
+    BAN TỔ CHỨC HỘI NGHỊ - PHƯỜNG ĐÔNG HƯNG THUẬN
+</div>
+
+<script>
+    // https://script.google.com/macros/s/AKfycbw3WqUW9S30lmEnlOl4MMuFxLBxFkyCbSIJy2gKRGu4BjJ0sFaLMoowUDy4Q_6OycC_Rg/exec
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw3WqUW9S30lmEnlOl4MMuFxLBxFkyCbSIJy2gKRGu4BjJ0sFaLMoowUDy4Q_6OycC_Rg/exec';
+    const form = document.getElementById('attendanceForm');
+    const btn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerHTML = "ĐANG XỬ LÝ...";
+
+        const formData = new FormData();
+        formData.append('fullname', form.fullname.value);
+        formData.append('unit', form.unit.value);
+        formData.append('position', form.position.value);
+        // Vì hội nghị này không có chuyên đề, ta gửi giá trị mặc định để Google Sheet không bị trống cột cuối
+        formData.append('topics', "Dự Hội nghị Tổng kết 2025");
+
+        fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: formData})
+            .then(() => {
+                alert('Đại biểu đã điểm danh thành công!');
+                form.reset();
+                btn.disabled = false;
+                btn.innerHTML = "XÁC NHẬN ĐIỂM DANH";
+            })
+            .catch(error => {
+                alert('Có lỗi xảy ra: ' + error.message);
+                btn.disabled = false;
+                btn.innerHTML = "XÁC NHẬN ĐIỂM DANH";
+            });
+    });
+</script>
+
+</body>
+</html>
